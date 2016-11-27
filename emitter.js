@@ -26,10 +26,13 @@ EventEmitter.prototype.emit = function(type, data) {
 };
 
 function Database(url) {
-
+    EventEmitter.call(this);
     this.url = url;
 
 }
+Database.prototype = Object.create(EventEmitter.prototype);
+
+Database.prototype.constructor = EventEmitter;
 
 Database.prototype.connect = function() {
 
